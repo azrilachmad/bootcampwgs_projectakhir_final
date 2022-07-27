@@ -1,0 +1,36 @@
+<div class="container mt-3">
+  <div class="col-md-6">
+    <h2>Add Category :</h2>
+  </div>
+  <div class="col-md-6">
+    <% if (typeof errors != "undefined") { %>
+
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        <% errors.forEach(error => { %>
+        <li><%= error.message %></li>
+      </ul>
+    </div>
+    
+    <% }) %> <% } %>
+
+    
+    <% let data; %> <% if (locals.params) { data = params %> <% } %>
+
+    <form method="post" action="/item-list/add-category">
+      <div class="mb-3">
+        <label for="item_name" class="form-label">Category Name :</label>
+        <input
+          type="text"
+          class="form-control"
+          id="category"
+          name="category"
+          value="<%= data?.item_name %>"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Category</button>
+    </form>
+  </div>
+</div>

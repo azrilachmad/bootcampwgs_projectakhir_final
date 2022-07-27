@@ -1,0 +1,71 @@
+<div class="container mt-3">
+
+  <div class="col-md-6">
+      <h2>Add User Access :</h2>
+      <% if (typeof errors != "undefined") { %>
+
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% errors.forEach(error => { %>
+          <li><%= error.message %></li>
+          <% }) %> 
+        </ul>
+      </div>
+      <% } %>
+
+      <% let data; %> <% if (locals.params) { data = params %> <% } %>
+
+        <form method="POST" action="/admin/addUser">
+          <input type="hidden" name="oldName" />
+          <div class="mb-3">
+            <label for="name" class="form-label">Username :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              value="<%= data?.username%>"
+              placeholder="Input Username"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Password :</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Input Password"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Confirm Password :</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password2"
+              name="password2"
+              placeholder="Confirm Your Password"
+          
+            />
+          </div>
+          <fieldset>
+            <div class="mb-3">
+              <label for="select" class="form-label">Select Role</label>
+              <select id="select" class="form-control" name="role">
+                <option selected value="">Select Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+              </select>
+            </div>
+                <button type="submit" value="addUser" class="btn btn-primary">
+                  Add User
+                </button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+    </div>
+
+</div>
